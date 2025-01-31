@@ -1,9 +1,10 @@
 from flask import Flask, request, render_template, jsonify
 import requests
+import os
 
 app = Flask(__name__)
 
-BOOKS_SERVICE_URL = "http://sse-lab10-simple.gucqgnd7b7azbuax.uksouth.azurecontainer.io:5000/books"
+BOOKS_SERVICE_URL = os.environ.get('BOOKS_SERVICE_URL')
 
 @app.route('/', methods=['GET', 'POST'])
 def search_books():
